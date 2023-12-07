@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> A110250078_期末作品</title>
+	<style>
+		.div_header_nav {
+			position: absolute;
+			width: 100%;
+			height: 20%;
+			background-image: url("images/nav_bg.png");
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			top: 0%;
+			left: 0%;
+			margin: 0;
+		}
+
+		header {
+			width: 100%;
+			height: 60%;
+			position: absolute;
+		}
+
+		nav {
+			width: 100%;
+			height: 40%;
+			top: 60%;
+			position: relative;
+			z-index: 999;
+		}
+
+		.nav_2 {
+			display: inline-block;
+			z-index: 999;
+		}
+
+		/* 下拉選單 */
+		.nav_cotent {
+			display: none;
+			position: absolute;
+			background-color: hsl(0, 0%, 91%);
+			text-align: center;
+		}
+
+		.nav_cotent2 {
+			display: none;
+			position: absolute;
+			background-color: #e7e7e7;
+			text-align: center;
+			flex-direction: column;
+			border-radius: 20px;
+			left: 100%;
+		}
+
+		.nav_cotent a {
+			display: block;
+			border-bottom: 1px solid #8e8e8e;
+		}
+
+		.nav_2:hover .nav_cotent {
+			display: block;
+		}
+
+		.nav_cotent:hover .nav_cotent2 {
+			display: flex;
+
+		}
+
+		.nav_cotent:hover .nav_cotent3 {
+			display: block;
+		}
+
+		.nav_cotent3 {
+			display: none;
+			position: absolute;
+			background-color: #e7e7e7;
+			text-align: center;
+			flex-direction: column;
+			right: 100%;
+			border-radius: 20px;
+		}
+
+
+
+
+		section {
+			position: absolute;
+			width: 70%;
+			height: 67%;
+			top: 20%;
+			left: 30%;
+			overflow: auto;
+			background-color: hsl(209, 100%, 90%);
+		}
+
+		aside {
+			position: absolute;
+			width: 30%;
+			height: 67%;
+			top: 20%;
+			left: 0%;
+			background-size: cover;
+			border: 10px solid rgb(120, 174, 182);
+			padding: 10px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+
+		aside image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		footer {
+			position: fixed;
+			width: 100%;
+			height: 13%;
+			top: 87%;
+			left: 0%;
+			/* background-color: lightblue; */
+			background-image: url("images/nav_bg.png");
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		footer img {
+			margin: 5px;
+			width: 80px;
+			height: 60px;
+		}
+
+		footer img:hover {
+			width: 120px;
+			height: 90px;
+		}
+
+		#photoBox {
+			width: 600px;
+			height: 300px;
+			background-color: #ffa64d;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+		}
+
+		#photoBox .photos {
+			width: 600px;
+			height: 300px;
+			overflow: hidden;
+		}
+
+		#photoBox img {
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		#photoBox img:hover {
+			clip-path: inset(35px 15px 35px 15px);
+			height: 350px;
+			transform: translateY(-25px);
+		}
+
+		#photoBox ul {
+			position: absolute;
+			right: 20px;
+			bottom: 10px;
+		}
+
+		#photoBox ul li {
+			width: 30px;
+			height: 30px;
+			margin: 0 2px;
+			float: left;
+			list-style: none;
+			text-align: center;
+			line-height: 30px;
+			background-color: rgba(162, 217, 102, 0.5);
+			color: rgba(162, 217, 102, 0.5);
+		}
+
+		#photoBox ul li :hover {
+			background-color: green;
+		}
+
+		#photoBox ul li a {
+			color: #ffffff;
+			text-decoration: none;
+		}
+
+		button {
+			background: linear-gradient(to bottom, #dfbdfa 5%, #80beea 100%);
+			background-color: #bdd9fa;
+			border-radius: 6px;
+			clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+			border: 1px solid rgb(158, 132, 243);
+			/* display: inline-block; */
+			cursor: pointer;
+			color: #ffffff;
+			font-family: Arial;
+			font-size: 15px;
+			font-weight: bold;
+			padding: 6px 24px;
+			text-decoration: none;
+			text-shadow: 0px 1px 0px #9752cc;
+			margin: 10px;
+			width: 150px;
+		}
+
+		/* 
+		button:hover {
+			background: linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+			background-color: #77a809;
+		} */
+
+
+		.slide {
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			animation: fade 25s linear infinite;
+
+		}
+
+		@keyframes fade {
+			4% {
+				opacity: 1;
+			}
+
+			20% {
+				opacity: 1;
+			}
+
+			24% {
+				opacity: 0;
+			}
+		}
+
+		aside>img:nth-child(5) {
+			animation-delay: 20s;
+		}
+
+		aside>img:nth-child(4) {
+			animation-delay: 15s;
+		}
+
+		aside>img:nth-child(3) {
+			animation-delay: 10s;
+		}
+
+		aside>img:nth-child(2) {
+			animation-delay: 5s;
+		}
+
+		aside>img:nth-child(1) {
+			animation-delay: 0s;
+		}
+
+		.intruation_table {
+			width: 50%;
+			text-align: center;
+			margin: auto;
+			border-width: 2px;
+			border-style: inset;
+			border-collapse: collapse;
+
+		}
+
+		.intruation_table th,
+		td {
+			border-bottom: 1px black dashed;
+		}
+
+		caption {
+			font-size: 20px;
+			font-weight: bolder;
+		}
+
+		.intruation_img {
+			border: 5px solid rgba(252, 179, 127, 0.936);
+			border-radius: 50px;
+			height: 500px;
+
+		}
+
+		.divbox {
+			width: 100%;
+			height: 400px;
+			overflow: hidden;
+			display: flex;
+		}
+
+		.div40 {
+			width: 40%;
+			overflow: hidden;
+		}
+
+		.div60 {
+			width: 60%;
+			overflow: hidden;
+			overflow: hidden;
+		}
+
+		.none1 a :hover~.none2 {
+			display: inline-block;
+		}
+
+		.none2 {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="div_header_nav">
+		<header>
+			<h1>
+				<marquee behovior="alternate">A110250078 蔡和樺 靜態網頁</marquee>
+			</h1>
+		</header>
+		<nav>
+			<div class="nav_2">
+				<a href="#music"><button>日文組</button></a>
+				<div class="nav_cotent">
+					<a href=""><button>一期生</button></a>
+					<div class="nav_cotent2">
+						<a href=""><button>夜空メル</button></a>
+						<a href=""><button>アキ・ローゼンタール</button></a>
+						<a href=""><button>赤井はあと</button></a>
+						<a href=""><button>白上フブキ</button></a>
+						<a href=""><button>夏色まつり</button></a>
+					</div>
+					<a href=""><button>二期生</button></a>
+					<a href=""><button>三期生</button></a>
+					<a href=""><button>四期生</button></a>
+					<a href=""><button>五期生</button></a>
+				</div>
+			</div>
+			<div class="nav_2">
+				<a href="#photoBox"><button>英文組</button></a>
+				<div class="nav_cotent">
+					<a href=""><button>Myth</button></a>
+					<a href=""><button>Promise</button></a>
+					<a href=""><button>Advent</button></a>
+				</div>
+			</div>
+			<div class="nav_2">
+				<a href="#video"><button>印尼組</button></a>
+				<div class="nav_cotent">
+					<a href=""><button>一期生</button></a>
+					<div class="nav_cotent3">
+						<a href=""><button>Ayunda Risu</button></a>
+						<a href=""><button>Moona Hoshinova</button></a>
+						<a href=""><button>Airani Iofifteen</button></a>
+					</div>
+					<a href=""><button>二期生</button></a>
+					<a href=""><button>三期生</button></a>
+
+				</div>
+			</div>
+			<div class="nav_2">
+					<a href=""><button>內部連結</button></a>
+					<div class="nav_cotent">
+						<a href="#10"> <button>介紹</button></a>
+						<a href="#20"><button>輪播照片</button></a>
+						<a href="#40"><button>音樂</button></a>
+						<a href="#30"><button>影片</button></a>
+						<a href="#40"> <button>非輪播照片</button></a>
+
+					</div>
+				</div>
+
+			</div>
+		</nav>
+	</div>
+	<main>
+		<section align="center">
+			<!-- intruduation -->
+			<div>
+				<table class="intruation_table" id="10">
+					<caption>Hololive intruduction</caption>
+					<tr>
+						<th>原文名稱</th>
+						<td>カバー株式会社</td>
+					</tr>
+					<tr>
+						<th>成立時間</th>
+						<td>2016年6月13日</td>
+					</tr>
+					<tr>
+						<th>代表人物</th>
+						<td>董事兼CEO:谷鄉元昭</td>
+					</tr>
+					<tr>
+						<th>產業</th>
+						<td>虛擬實境<br>虛擬Youtuber經紀公司</td>
+					</tr>
+					<tr>
+						<th>主要部門</th>
+						<td>hololive <br>
+							hololive DEV_IS <br> holostarts <br>hololive indonesia <br>
+							hololive English <br>holostarts English <br></td>
+					</tr>
+				</table>
+				<br><br>
+				<img class="intruation_img" src="images/holointro.jpg" alt="">
+
+			</div>
+			<!-- 圖片 -->
+			<br id="20">
+			<div id="photoBox" >
+				<div class="photos">
+					<img src="images/fubuki.png" id="p1">
+					<img src="images/miko.png" id="p2">
+					<img src="images/susei.png" id="p3">
+					<img src="images/61.png" id="p4">
+				</div>
+				<ul>
+					<li><a href="#p1">1</a></li>
+					<li><a href="#p2">2</a></li>
+					<li><a href="#p3">3</a></li>
+					<li><a href="#p4">4</a></li>
+				</ul>
+			</div><br><br><br>
+			</div>
+			<div style=" text-align: center; margin: auto;" id="30">
+				<marquee behavior="alternate">
+					<h2>ヽ(✿ﾟ▽ﾟ)ノ影音專區ヽ(✿ﾟ▽ﾟ)ノ</h2>
+				</marquee>
+			</div>
+			<div id="video">
+				<table style="margin-left: 50px;">
+					<tr>
+						<th><video src="videos/fuvuki.mp4" controls height="300px" width="450px"></video></th>
+						<th><video src="videos/koyori.mp4" controls height="300px" width="450px"></video></th>
+					</tr>
+					<tr>
+						<th><video src="videos/pekora.mp4" controls height="300px" width="450px"></video></th>
+						<th><video src="videos/susei.mp4" controls height="300px" width="450px"></video></th>
+					</tr>
+				</table>
+
+			</div><br><br><br>
+			<div  id="40">
+				<table style="text-align: center; margin: auto; width: 100%;">
+					<tr>
+						<th><img src="images/miko.png" alt=""><br><audio
+								src="musics/マイネームイズエリート☆ さくらみこ (official)_miko.mp3" controls
+								style="width: 280px;"></audio></th>
+						<th><img src="images/susei.png" alt=""><br><audio src="musics/NEXT COLOR PLANET_susei.mp3"
+								controls style="width: 280px;"></audio></th>
+					</tr>
+					<tr>
+						<th><img src="images/fubuki.png" alt=""><br><audio
+								src="musics/【Hololive歌曲翻譯中日字幕】KINGWORLD-白上フブキ.mp3" controls
+								style="width: 280px;"></audio>
+						<th><img src="images/61.png" alt=""><br><audio src="musics/オーバード_61.mp3" controls
+								style="width: 280px;"></audio></th>
+					</tr>
+				</table>
+
+			</div>
+
+
+		</section>
+		<aside>
+			<img class="slide" src="images/susei.png" alt="">
+			<img class="slide" src="images/miko.png" alt="">
+			<img class="slide" src="images/fubuki.png" alt="">
+			<img class="slide" src="images/61.png" alt="">
+			<img class="slide" src="images/holointro.jpg" alt="">
+
+		</aside>
+	</main>
+	<footer>
+		<marquee behavior="alternate" scrollamount="10" onmouseover="this.stop()" onmouseout="this.start()">
+			<img src="images/miko.png">
+			<img src="images/61.png">
+			<img src="images/susei.png">
+			<img src="images/fubuki.png">
+			</marqee>
+	</footer>
+</body>
+
+</html>
